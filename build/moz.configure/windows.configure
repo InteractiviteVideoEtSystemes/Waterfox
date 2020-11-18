@@ -79,14 +79,20 @@ def get_sdk_dirs(sdk, subdir):
         include_dirs['winv6.3'] = include_dirs['include']
         del include_dirs['include']
 
-    valid_versions = sorted(set(include_dirs) & set(lib_dirs), reverse=True)
+    valid_versions = sorted(set(include_dirs) & set(lib_dirs), reverse=True)	
+	
     if valid_versions:
+        preferred_version='10.0.18362.0'
+        if not preferred_version in valid_versions:
+           preferred_version=valid_versions[0]
+        else:
+           log.info('Using preferred SDK version 10.0.18362.0')
+
         return namespace(
             path=sdk,
-            lib=lib_dirs[valid_versions[0]],
-            include=include_dirs[valid_versions[0]],
+            lib=lib_dirs[preferred_version],
+            include=include_dirs[preferred_version],
         )
-
 
 @imports(_from='mozbuild.shellutil', _import='quote')
 def valid_windows_sdk_dir_result(value):
@@ -103,7 +109,8 @@ def valid_windows_sdk_dir(compiler, windows_sdk_dir, target_version,
                           windows_sdk_dir_env):
     if windows_sdk_dir_env:
         windows_sdk_dir_env = windows_sdk_dir_env[0]
-    sdks = {}
+    sdks = {} 
+
     for d in windows_sdk_dir:
         sdk = get_sdk_dirs(d, 'um')
         if sdk:
