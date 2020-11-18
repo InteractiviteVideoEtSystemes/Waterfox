@@ -136,7 +136,7 @@ case "$target" in
         fi
         # _CRT_SECURE_NO_WARNINGS disables warnings about using MSVC-specific
         # secure CRT functions.
-        CXXFLAGS="$CXXFLAGS -D_CRT_SECURE_NO_WARNINGS"
+        CXXFLAGS="$CXXFLAGS -D_CRT_SECURE_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -D_CRT_USE_BUILTIN_OFFSETOF"
         AC_LANG_SAVE
         AC_LANG_C
         AC_TRY_COMPILE([#include <stdio.h>],

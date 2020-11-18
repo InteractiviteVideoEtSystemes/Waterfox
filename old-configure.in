@@ -801,7 +801,7 @@ case "$target" in
             CXXFLAGS="$CXXFLAGS -Wno-used-but-marked-unused"
         fi
         # Silence VS2017 15.5+ TR1 deprecation warnings hit by older gtest versions
-        CXXFLAGS="$CXXFLAGS -D_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING"
+        CXXFLAGS="$CXXFLAGS -D_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING -D_CRT_USE_BUILTIN_OFFSETOF"
         LIBS="$LIBS kernel32.lib user32.lib gdi32.lib winmm.lib wsock32.lib advapi32.lib secur32.lib"
         MOZ_DEBUG_LDFLAGS='-DEBUG'
         WARNINGS_AS_ERRORS='-WX'
