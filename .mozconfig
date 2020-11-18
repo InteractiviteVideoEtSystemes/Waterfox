@@ -15,10 +15,13 @@ ac_add_options --disable-maintenance-service
 ac_add_options --enable-lto
 ac_add_options --enable-optimize="-O2 -Qvec -w -clang:-arch:SSE3"
 ac_add_options --target=x86_64-pc-mingw32
-ac_add_options --with-libclang-path="C:\Program Files\LLVM\bin"
-ac_add_options --with-clang-path="C:\Program Files\LLVM\bin\clang.exe"
-export WIN32_REDIST_DIR="/c/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Redist/MSVC/14.16.27012/x64/Microsoft.VC141.CRT"
+ac_add_options --with-libclang-path="c:\Program Files\LLVM\bin"
+ac_add_options --with-clang-path="c:\Program Files (x86)\LLVM\bin\clang.exe"
+export WIN32_REDIST_DIR="/c/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Redist/MSVC/14.27.29016/x64/Microsoft.VC142.CRT"
 export WIN_UCRT_REDIST_DIR="/c/Program Files (x86)/Windows Kits/10/Redist/ucrt/DLLs/x64"
+export CXXFLAGS="-Ic:/Users/ives/.mozbuild/clang-tools/clang-tidy/lib/clang/8.0.0/include"
+export CFLAGS="-Ic:/Users/ives/.mozbuild/clang-tools/clang-tidy/lib/clang/8.0.0/include"
+export CPPFLAGS="-Ic:/Users/ives/.mozbuild/clang-tools/clang-tidy/lib/clang/8.0.0/include"
 # Linux Specific Options
 elif test `uname -s` = Linux; then
 #x86 Specific Options
