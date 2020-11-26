@@ -83,10 +83,16 @@ def get_sdk_dirs(sdk, subdir):
 
     valid_versions = sorted(set(include_dirs) & set(lib_dirs), reverse=True)
     if valid_versions:
+        # preferred_version='10.0.18362.0'
+        preferred_version='10.0.17763.0'
+        if not preferred_version in valid_versions:
+           preferred_version=valid_versions[0]
+    
+        log.info('Using windows SDK version %s' % preferred_version)
         return namespace(
             path=sdk,
-            lib=lib_dirs[valid_versions[0]],
-            include=include_dirs[valid_versions[0]],
+            lib=lib_dirs[preferred_version],
+            include=include_dirs[preferred_version],
         )
 
 
@@ -254,10 +260,12 @@ def vc_path(c_compiler, host_c_compiler, toolchain_search_path):
 
     # In clang-cl builds, we need the headers and libraries from an MSVC installation.
     vc_program = find_program('cl.exe', paths=toolchain_search_path)
+
     if not vc_program:
         die('Cannot find a Visual C++ install for e.g. ATL headers.')
 
     result = os.path.dirname(vc_program)
+
     while True:
         next, p = os.path.split(result)
         if next == result:
@@ -266,6 +274,7 @@ def vc_path(c_compiler, host_c_compiler, toolchain_search_path):
         result = next
         if p.lower() == 'bin':
             break
+
     return os.path.normpath(result)
 
 
