@@ -907,10 +907,10 @@ if (AppConstants.platform == "macosx") {
                   tooltip="dynamic-shortcut-tooltip"
                   data-l10n-id="main-context-menu-stop"
                   command="Browser:Stop"/>
-<!--        <menuitem id="context-bookmarkpage"
-                  class="menuitem-iconic"
+        <menuitem id="context-bookmarkpage"
+                  class="menuitem-iconic" hidden="true"
                   data-l10n-id="main-context-menu-bookmark-add"
-                  oncommand="gContextMenu.bookmarkThisPage();"/> -->
+                  oncommand="gContextMenu.bookmarkThisPage();"/>
       </menugroup>
       <menuseparator id="context-sep-navigation"/>
       <menuseparator id="page-menu-separator"/>
@@ -926,7 +926,7 @@ if (AppConstants.platform == "macosx") {
                 accesskey="&spellUndoAddToDictionary.accesskey;"
                 oncommand="InlineSpellCheckerUI.undoAddToDictionary();" />
       <menuseparator id="spell-suggestions-separator"/>
-      <menuitem id="context-openlinkincurrent"
+      <!-- <menuitem id="context-openlinkincurrent"
                 data-l10n-id="main-context-menu-open-link"
                 oncommand="gContextMenu.openLinkInCurrent();"/>
       <menuitem id="context-openlinkincontainertab"
@@ -935,7 +935,7 @@ if (AppConstants.platform == "macosx") {
       <menuitem id="context-openlinkintab"
                 data-l10n-id="main-context-menu-open-link-new-tab"
                 data-usercontextid="0"
-                oncommand="gContextMenu.openLinkInTab(event);"/>
+                oncommand="gContextMenu.openLinkInTab(event);"/> 
 
       <menu id="context-openlinkinusercontext-menu"
             data-l10n-id="main-context-menu-open-link-container-tab"
@@ -956,14 +956,14 @@ if (AppConstants.platform == "macosx") {
                 oncommand="gContextMenu.bookmarkLink();"/>
       <menuitem id="context-savelink"
                 data-l10n-id="main-context-menu-save-link"
-                oncommand="gContextMenu.saveLink();"/>
-      <menuitem id="context-savelinktopocket"
+                oncommand="gContextMenu.saveLink();"/> -->
+      <menuitem id="context-savelinktopocket" hidden="true"
                 data-l10n-id="main-context-menu-save-link-to-pocket"
                 oncommand= "Pocket.savePage(gContextMenu.browser, gContextMenu.linkURL);"/>
-      <menuitem id="context-copyemail"
+      <menuitem id="context-copyemail" hidden="true"
                 data-l10n-id="main-context-menu-copy-email"
                 oncommand="gContextMenu.copyEmail();"/>
-      <menuitem id="context-copylink"
+      <menuitem id="context-copylink" hidden="true"
                 data-l10n-id="main-context-menu-copy-link"
                 oncommand="gContextMenu.copyLink();"/>
       <menuseparator id="context-sep-copylink"/>
@@ -1308,7 +1308,7 @@ if (AppConstants.platform == "macosx") {
             data-l10n-id="places-open-all-in-tabs"
             selectiontype="multiple"
             selection="link"/>
-  <menuitem id="placesContext_open:newwindow"
+  <!-- <menuitem id="placesContext_open:newwindow"
             command="placesCmd_open:window"
             data-l10n-id="places-open-window"
             selectiontype="single"
@@ -1340,7 +1340,7 @@ if (AppConstants.platform == "macosx") {
   <menuitem id="placesContext_createBookmark"
             command="placesCmd_createBookmark"
             selection="link"
-            forcehideselection="bookmark|tagChild"/>
+            forcehideselection="bookmark|tagChild"/> -->
   <menuitem id="placesContext_cut"
             command="placesCmd_cut"
             data-l10n-id="text-action-cut"
@@ -1833,7 +1833,7 @@ if (AppConstants.platform == "macosx") {
                        oncommand="PanelUI._onBannerItemSelected(event)"
                        wrap="true"
                        hidden="true"/>
-        <toolbaritem id="appMenu-fxa-status"
+        <!-- <toolbaritem id="appMenu-fxa-status"
                      class="sync-ui-item"
                      defaultlabel="&fxa.menu.signin.label;"
                      flex="1">
@@ -1843,7 +1843,7 @@ if (AppConstants.platform == "macosx") {
                         label="&fxa.menu.signin.label;"
                         closemenu="none"
                         oncommand="gSync.toggleAccountPanel('PanelUI-fxa', this, event)"/>
-        </toolbaritem>
+        </toolbaritem> -->
         <toolbarseparator class="sync-ui-item"/>
         <toolbaritem>
           <toolbarbutton id="appMenu-protection-report-button"
@@ -1857,7 +1857,7 @@ if (AppConstants.platform == "macosx") {
           </toolbarbutton>
         </toolbaritem>
         <toolbarseparator id="appMenu-tp-separator"/>
-        <toolbarbutton id="appMenu-new-window-button"
+        <!-- <toolbarbutton id="appMenu-new-window-button"
                        class="subviewbutton subviewbutton-iconic"
                        label="&newNavigatorCmd.label;"
                        key="key_newNavigator"
@@ -1870,7 +1870,7 @@ if (AppConstants.platform == "macosx") {
         <toolbarbutton id="appMenuRestoreLastSession"
                        label="&appMenuHistory.restoreSession.label;"
                        class="subviewbutton subviewbutton-iconic"
-                       command="Browser:RestoreLastSession"/>
+                       command="Browser:RestoreLastSession"/> -->
         <toolbarseparator/>
         <toolbaritem id="appMenu-zoom-controls" class="toolbaritem-combined-buttons" closemenu="none">
           <!-- Use a spacer, because panel sizing code gets confused when using CSS methods. -->
@@ -2380,7 +2380,7 @@ if (AppConstants.platform == "macosx") {
                        oncommand="BookmarkingUI.showSubView(this);"/>
         <toolbarbutton id="appMenu-library-pocket-button"
                        class="subviewbutton subviewbutton-iconic"
-                       label="&pocketMenuitem.label;"
+                       label="&pocketMenuitem.label;" hidden="true"
                        oncommand="Pocket.openList(event)"/>
         <toolbarbutton id="appMenu-library-history-button"
                        class="subviewbutton subviewbutton-iconic subviewbutton-nav"
@@ -3941,8 +3941,8 @@ if (AppConstants.platform == "macosx") {
 
         <hbox class="titlebar-spacer" type="pre-tabs"/>
 
-        <hbox flex="1" align="end" class="toolbar-items">
-          <hbox id="TabsToolbar-customization-target" flex="1">
+        <hbox flex="1" align="end" class="toolbar-items"> 
+          <hbox id="TabsToolbar-customization-target" flex="1" hidden="true"> <!-- IVES -->
             <tabs id="tabbrowser-tabs"
                   is="tabbrowser-tabs"
                   flex="1"
@@ -3993,7 +3993,7 @@ if (AppConstants.platform == "macosx") {
         <hbox class="private-browsing-indicator"/>
 
 
-<hbox class="titlebar-buttonbox-container" skipintoolbarset="true">
+<hbox class="titlebar-buttonbox-container" skipintoolbarset="true" align="right">
   <hbox class="titlebar-buttonbox titlebar-color">
     <toolbarbutton class="titlebar-button titlebar-min"
                    oncommand="window.minimize();"
@@ -4031,9 +4031,10 @@ if (AppConstants.platform == "macosx") {
 
       <toolbartabstop/>
       <hbox id="nav-bar-customization-target" flex="1">
+	  <!-- IVES hide the nav bar buttons -->
         <toolbarbutton id="back-button" class="toolbarbutton-1 chromeclass-toolbar-additional"
                        data-l10n-id="toolbar-button-back"
-                       removable="false" overflows="false"
+                       removable="false" overflows="false" hidden="true"
                        keepbroadcastattributeswhencustomizing="true"
                        command="Browser:BackOrBackDuplicate"
                        onclick="checkForMiddleClick(this, event);"
@@ -4041,15 +4042,16 @@ if (AppConstants.platform == "macosx") {
                        context="backForwardMenu"/>
         <toolbarbutton id="forward-button" class="toolbarbutton-1 chromeclass-toolbar-additional"
                        data-l10n-id="toolbar-button-forward"
-                       removable="false" overflows="false"
+                       removable="false" overflows="false" hidden="true"
                        keepbroadcastattributeswhencustomizing="true"
                        command="Browser:ForwardOrForwardDuplicate"
                        onclick="checkForMiddleClick(this, event);"
                        tooltip="forward-button-tooltip"
                        context="backForwardMenu"/>
-        <!-- <toolbaritem id="stop-reload-button" class="chromeclass-toolbar-additional"
+		<!-- IVES hide the nav bar buttons -->
+        <toolbaritem id="stop-reload-button" class="chromeclass-toolbar-additional"
                      data-l10n-id="toolbar-button-stop-reload"
-                     removable="true" overflows="false">
+                     removable="true" overflows="false" hidden="true">
           <toolbarbutton id="reload-button" class="toolbarbutton-1"
                          data-l10n-id="toolbar-button-reload"
                          command="Browser:ReloadOrDuplicate"
@@ -4067,9 +4069,10 @@ if (AppConstants.platform == "macosx") {
               <image class="toolbarbutton-animatable-image"/>
             </box>
           </toolbarbutton>
-        </toolbaritem> 
+        </toolbaritem>
+		<!-- IVES hide the nav bar buttons -->
         <toolbarbutton id="home-button" class="toolbarbutton-1 chromeclass-toolbar-additional"
-                       removable="true"
+                       removable="true" hidden="true"
                        label="&homeButton.label;"
                        ondragover="homeButtonObserver.onDragOver(event)"
                        ondragenter="homeButtonObserver.onDragOver(event)"
@@ -4078,7 +4081,7 @@ if (AppConstants.platform == "macosx") {
                        key="goHome"
                        onclick="BrowserHome(event);"
                        cui-areatype="toolbar"
-                       tooltiptext="&homeButton.defaultPage.tooltip;"/> -->
+                       tooltiptext="&homeButton.defaultPage.tooltip;"/>
         <toolbaritem id="urlbar-container" flex="400" persist="width"
                      removable="false"
                      class="chromeclass-location" overflows="false">
@@ -4218,6 +4221,7 @@ if (AppConstants.platform == "macosx") {
               <moz-input-box tooltip="aHTMLTooltip"
                              class="urlbar-input-box"
                              flex="1"
+							 enabled="false"
                              role="combobox"
                              aria-owns="urlbar-results">
                 <html:input id="urlbar-scheme"

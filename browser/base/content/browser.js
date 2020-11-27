@@ -1933,7 +1933,6 @@ var gBrowserInit = {
       // the keybinding.
       document.getElementById("key_privatebrowsing").remove();
     }
-
     this._loadHandled = true;
   },
 
@@ -2082,7 +2081,11 @@ var gBrowserInit = {
 
     gNavToolbox.addEventListener("customizationstarting", CustomizationHandler);
     gNavToolbox.addEventListener("aftercustomization", CustomizationHandler);
-
+	/* IVES hide nav toolbox */
+	console.log("IVES LeDesktop: hidding nav toolbar");
+	var navbar2 = document.getElementById("nav-bar");
+	navbar2.setAttribute("hidden", "true");
+	
     SessionStore.promiseInitialized.then(() => {
       // Bail out if the window has been closed in the meantime.
       if (window.closed) {
