@@ -4,6 +4,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
       <menugroup id="context-navigation">
+#ifdef IVES_REMOVE
         <menuitem id="context-back"
                   data-l10n-id="main-context-menu-back"
                   class="menuitem-iconic"
@@ -14,6 +15,7 @@
                   class="menuitem-iconic"
                   command="Browser:ForwardOrForwardDuplicate"
                   onclick="checkForMiddleClick(this, event);"/>
+#endif
         <menuitem id="context-reload"
                   class="menuitem-iconic"
                   tooltip="dynamic-shortcut-tooltip"
@@ -44,6 +46,7 @@
                 accesskey="&spellUndoAddToDictionary.accesskey;"
                 oncommand="InlineSpellCheckerUI.undoAddToDictionary();" />
       <menuseparator id="spell-suggestions-separator"/>
+#ifdef IVES_REMOVE
       <menuitem id="context-openlinkincurrent"
                 data-l10n-id="main-context-menu-open-link"
                 oncommand="gContextMenu.openLinkInCurrent();"/>
@@ -76,6 +79,7 @@
       <menuitem id="context-savelink"
                 data-l10n-id="main-context-menu-save-link"
                 oncommand="gContextMenu.saveLink();"/>
+#endif
       <menuitem id="context-savelinktopocket"
                 data-l10n-id="main-context-menu-save-link-to-pocket"
                 oncommand= "Pocket.savePage(gContextMenu.browser, gContextMenu.linkURL);"/>

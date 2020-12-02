@@ -58,7 +58,11 @@ ac_add_options --enable-optimize="-O1 -w"
 ac_add_options --enable-rust-simd
 ac_add_options --disable-updater
 
-ac_add_options --with-branding=browser/branding/waterfox
+ac_add_options --with-branding=browser/branding/le-desktop
+ac_add_options --with-branding=browser/branding/le-desktop
+ac_add_options --with-app-basename=LeDesktop
+ac_add_options --with-distribution-id=fr.ives
+ac_add_options --with-macbundlename-prefix=fr.ives
 
 #if test -f "$HOME/.mozbuild/sccache/sccache.exe"; then
 #	ac_add_options --with-ccache=$HOME/.mozbuild/sccache/sccache

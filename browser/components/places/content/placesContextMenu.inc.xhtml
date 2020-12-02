@@ -36,6 +36,7 @@
             data-l10n-id="places-open-all-in-tabs"
             selectiontype="multiple"
             selection="link"/>
+#ifdef IVES_REMOVE
   <menuitem id="placesContext_open:newwindow"
             command="placesCmd_open:window"
             data-l10n-id="places-open-window"
@@ -69,6 +70,7 @@
             command="placesCmd_createBookmark"
             selection="link"
             forcehideselection="bookmark|tagChild"/>
+#endif
   <menuitem id="placesContext_cut"
             command="placesCmd_cut"
             data-l10n-id="text-action-cut"

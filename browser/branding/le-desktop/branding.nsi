@@ -8,12 +8,12 @@
 
 # BrandFullNameInternal is used for some registry and file system values
 # instead of BrandFullName and typically should not be modified.
-!define BrandFullNameInternal "Waterfox"
-!define BrandFullName         "Waterfox"
-!define CompanyName           "Waterfox Ltd."
+!define BrandFullNameInternal "LeDesktop"
+!define BrandFullName         "Le Desktop"
+!define CompanyName           "IVeS"
 !define URLInfoAbout          "https://www.waterfox.net"
-!define URLUpdateInfo         "https://www.waterfox.net/blog/waterfox-${AppVersion}-release/"
-!define HelpLink              "https://support.waterfox.net"
+!define URLUpdateInfo         "https://download.ives.fr/le-desktop/${AppVersion}/"
+!define HelpLink              "https://download.ives.fr/le-desktop/"
 
 ; The OFFICIAL define is a workaround to support different urls for Release and
 ; Beta since they share the same branding when building with other branches that
@@ -22,8 +22,8 @@
 !define URLStubDownloadX86 ""
 !define URLStubDownloadAMD64 ""
 !define URLStubDownloadAArch64 ""
-!define URLManualDownload "https://www.waterfox.net/download/"
-!define URLSystemRequirements "https://www.waterfox.net/download/"
+!define URLManualDownload "https://download.ives.fr/le-desktop/"
+!define URLSystemRequirements "https://download.ives.fr/le-desktop/"
 !define Channel "current"
 
 # The installer's certificate name and issuer expected by the stub installer

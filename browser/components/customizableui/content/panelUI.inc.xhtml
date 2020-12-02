@@ -230,6 +230,7 @@
                        oncommand="PanelUI._onBannerItemSelected(event)"
                        wrap="true"
                        hidden="true"/>
+#ifdef IVES_REMOVE
         <toolbaritem id="appMenu-fxa-status"
                      class="sync-ui-item"
                      defaultlabel="&fxa.menu.signin.label;"
@@ -241,6 +242,7 @@
                         closemenu="none"
                         oncommand="gSync.toggleAccountPanel('PanelUI-fxa', this, event)"/>
         </toolbaritem>
+#endif
         <toolbarseparator class="sync-ui-item"/>
         <toolbaritem>
           <toolbarbutton id="appMenu-protection-report-button"
@@ -253,6 +255,7 @@
             </label>
           </toolbarbutton>
         </toolbaritem>
+#ifdef IVES_REMOVE
         <toolbarseparator id="appMenu-tp-separator"/>
         <toolbarbutton id="appMenu-new-window-button"
                        class="subviewbutton subviewbutton-iconic"
@@ -280,6 +283,7 @@
                        label="&appMenuHistory.restoreSession.label;"
                        class="subviewbutton subviewbutton-iconic"
                        command="Browser:RestoreLastSession"/>
+#endif
         <toolbarseparator/>
         <toolbaritem id="appMenu-zoom-controls" class="toolbaritem-combined-buttons" closemenu="none">
           <!-- Use a spacer, because panel sizing code gets confused when using CSS methods. -->
