@@ -4,7 +4,7 @@
 
 // This file contains branding-specific prefs.
 
-pref("startup.homepage_override_url", "https://download.ives.fr/le-desktop/%DISPLAY_VERSION%/welcome.php");
+pref("startup.homepage_override_url", "https://www.ives.fr/");
 pref("startup.homepage_welcome_url", "about:welcome");
 pref("startup.homepage_welcome_url.additional", "https://download.ives.fr/le-desktop/%DISPLAY_VERSION%/welcome.php");
 // Interval: Time between checks for a new version (in seconds)
@@ -16,7 +16,7 @@ pref("app.update.promptWaitTime", 691200);
 // app.update.url.details: a default value for the "More information about this
 // update" link supplied in the "An update is available" page of the update
 // wizard.
-  pref("app.update.url.manual", "https://download.ives.fr/le-desktop/%DISPLAY_VERSION%/
+  pref("app.update.url.manual", "https://download.ives.fr/le-desktop/%DISPLAY_VERSION%/");
   pref("app.update.url.details", "https://download.ives.fr/le-desktop/%DISPLAY_VERSION%/s");
   pref("app.releaseNotesURL", "https://download.ives.fr/le-desktop/%DISPLAY_VERSION%/releasenote.php");
 
