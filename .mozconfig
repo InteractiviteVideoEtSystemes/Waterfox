@@ -4,6 +4,9 @@ if test `uname -s` = Darwin; then
 	export MOZ_APP_DISPLAYNAME=LeDesktop
 	ac_add_options --target=x86_64-apple-darwin
 	ac_add_options --with-distribution-id=fr.ives
+	export STRIP=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip
+	export OTOOL=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/otool
+
 elif test `uname -s` = MINGW32_NT-6.2; then
 	ac_add_options --disable-bits-download
 	ac_add_options --disable-default-browser-agent
