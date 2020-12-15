@@ -9,6 +9,7 @@
                                   this.setAttribute('openedwithkey',
                                                     event.target.parentNode.openedWithKey);">
             <menu id="file-menu" data-l10n-id="menu-file">
+#ifdef IVES_REMOVE
               <menupopup id="menu_FilePopup"
                          onpopupshowing="updateFileMenuUserContextUIVisibility('menu_newUserContext');
                                          updateImportCommandEnabledState();">
@@ -25,6 +26,7 @@
                 <menuitem id="menu_newPrivateWindow"
                           command="Tools:PrivateBrowsing"
                           key="key_privatebrowsing" data-l10n-id="menu-file-new-private-window"/>
+
 #ifdef NIGHTLY_BUILD
                 <menuitem id="menu_newFissionWindow"
                           command="Tools:FissionWindow"
@@ -40,6 +42,7 @@
                 <menuitem id="menu_openFile"
                           command="Browser:OpenFile"
                           key="openFileKb" data-l10n-id="menu-file-open-file"/>
+#endif
                 <menuitem id="menu_close"
                           class="show-only-for-keyboard"
                           key="key_close"
@@ -68,9 +71,11 @@
                           key="printKb"
                           command="cmd_print" data-l10n-id="menu-file-print"/>
                 <menuseparator/>
+#ifdef IVES_REMOVE
                 <menuitem id="menu_importFromAnotherBrowser"
                           command="cmd_file_importFromAnotherBrowser" data-l10n-id="menu-file-import-from-another-browser"/>
                 <menuseparator/>
+#endif
                 <menuitem id="goOfflineMenuitem"
                           type="checkbox"
                           command="cmd_toggleOfflineStatus" data-l10n-id="menu-file-go-offline"/>
@@ -238,7 +243,7 @@
                           oncommand="gBrowser.selectedBrowser.sendMessageToActor('SwitchDocumentDirection', {}, 'SwitchDocumentDirection', 'roots');" data-l10n-id="menu-view-bidi-switch-page-direction"/>
               </menupopup>
             </menu>
-
+#ifdef IVES_REMOVE
             <menu id="history-menu" data-l10n-id="menu-history">
               <menupopup id="goPopup"
 #ifndef XP_MACOSX
@@ -290,7 +295,9 @@
                                class="hide-if-empty-places-result"/>
               </menupopup>
             </menu>
+#endif
 
+#ifdef IVES_REMOVES
   <menu id="bookmarksMenu"
         ondragenter="PlacesMenuDNDHandler.onDragEnter(event);"
         ondragover="PlacesMenuDNDHandler.onDragOver(event);"
@@ -370,6 +377,7 @@
     </menupopup>
   </menu>
 
+#endif
             <menu id="tools-menu" data-l10n-id="menu-tools">
               <menupopup id="menu_ToolsPopup">
               <menuitem id="menu_openDownloads"
@@ -455,6 +463,7 @@
 #endif
                    data-l10n-id="menu-help">
               <menupopup id="menu_HelpPopup" onpopupshowing="buildHelpMenu();">
+#ifdef IVES_REMOVE
                 <menuitem id="menu_openHelp"
                           oncommand="openHelpLink('firefox-help')"
                           onclick="checkForMiddleClick(this, event);"
@@ -498,10 +507,12 @@
                           onclick="checkForMiddleClick(this, event);"/>
                 <menuseparator id="aboutSeparator"/>
                 <!-- We need to leave those strings in DTD until bug 1568133 is fixed. -->
+#endif
                 <menuitem id="aboutName"
                           accesskey="&aboutProduct2.accesskey;"
                           label="&aboutProduct2.label;"
                           oncommand="openAboutDialog();"/>
               </menupopup>
           </menu>
+        
         </menubar>
