@@ -9,10 +9,10 @@
                                   this.setAttribute('openedwithkey',
                                                     event.target.parentNode.openedWithKey);">
             <menu id="file-menu" data-l10n-id="menu-file">
-#ifdef IVES_REMOVE
               <menupopup id="menu_FilePopup"
                          onpopupshowing="updateFileMenuUserContextUIVisibility('menu_newUserContext');
                                          updateImportCommandEnabledState();">
+#ifdef IVES_REMOVE
                 <menuitem id="menu_newNavigatorTab"
                           command="cmd_newNavigatorTab"
                           key="key_newNavigatorTab" data-l10n-id="menu-file-new-tab"/>
