@@ -67,6 +67,7 @@
 #include "nsIWeakReferenceUtils.h"
 #include "nsPluginNativeWindow.h"
 #include "nsIContentPolicy.h"
+#include "nsIConsoleService.h"
 #include "nsContentPolicyUtils.h"
 #include "mozilla/ResultExtensions.h"
 #include "mozilla/TimeStamp.h"
@@ -823,9 +824,16 @@ nsresult nsPluginHost::TrySetUpPluginInstance(const nsACString& aMimeType,
   }
 #endif
 
+  nsCOMPtr<nsIConsoleService> console(do_GetService("@mozilla.org/consoleservice;1"));
   RefPtr<nsNPAPIPlugin> plugin;
   GetPlugin(aMimeType, getter_AddRefs(plugin));
   if (!plugin) {
+    if (console) {
+	  nsAutoString message(NS_LITERAL_STRING("Failed to find an NPAPI plugin for mime type "));
+	  message += NS_ConvertASCIItoUTF16(aMimeType);
+      console->LogStringMessage(message.get());
+    }
+
     return NS_ERROR_FAILURE;
   }
 
@@ -851,6 +859,11 @@ nsresult nsPluginHost::TrySetUpPluginInstance(const nsACString& aMimeType,
   // our COM pointer will free the peer
   nsresult rv = instance->Initialize(plugin.get(), aOwner, aMimeType);
   if (NS_FAILED(rv)) {
+	if (console) {
+	  nsAutoString message(NS_LITERAL_STRING("Failed to initialize NPAPI plugin for mime type "));
+	  message += NS_ConvertASCIItoUTF16(aMimeType);
+      console->LogStringMessage(message.get());
+    }
     mInstances.RemoveElement(instance.get());
     aOwner->SetInstance(nullptr);
     return rv;

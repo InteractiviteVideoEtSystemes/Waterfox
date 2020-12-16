@@ -165,6 +165,8 @@ nsresult PluginFinder::DoFullSearch(const FoundPluginCallback& aCallback) {
   mCreateList = true;
   mFoundPluginCallback = std::move(aCallback);
 
+  PLUGIN_LOG(PLUGIN_LOG_BASIC,
+             ("PluginFinder::DoFullSearch %s \n", mFlashOnly ? "looking for Flash only" : "looking up all plugins"));
   nsresult rv = EnsurePluginReg();
   // We pass this back to the caller, and ignore all other errors.
   if (rv == NS_ERROR_NOT_AVAILABLE) {
@@ -456,12 +458,10 @@ nsresult PluginFinder::ScanPluginsDirectory(nsIFile* pluginsDir,
 
   *aPluginsChanged = false;
 
-#ifdef PLUGIN_LOGGING
   nsAutoCString dirPath;
-  pluginsDir->GetNativePath(dirPath);
+  pluginsDir->GetNativeTarget(dirPath);
   PLUGIN_LOG(PLUGIN_LOG_BASIC,
              ("PluginFinder::ScanPluginsDirectory dir=%s\n", dirPath.get()));
-#endif
 
   nsCOMPtr<nsIDirectoryEnumerator> iter;
   rv = pluginsDir->GetDirectoryEntries(getter_AddRefs(iter));
@@ -532,6 +532,8 @@ nsresult PluginFinder::ScanPluginsDirectory(nsIFile* pluginsDir,
           invalidPlugins->mSeen = true;
         }
         isKnownInvalidPlugin = true;
+		PLUGIN_LOG(PLUGIN_LOG_BASIC,
+             ("PluginFinder::ScanPluginsDirectory [%s] is marked as invalid\n", filePath.get()));
         break;
       }
     }
@@ -568,7 +570,8 @@ nsresult PluginFinder::ScanPluginsDirectory(nsIFile* pluginsDir,
           mInvalidPlugins->mPrev = invalidTag;
         }
         mInvalidPlugins = invalidTag;
-
+		PLUGIN_LOG(PLUGIN_LOG_BASIC,
+             ("PluginFinder::ScanPluginsDirectory [%s] has no associated mime type. Ignoring\n", filePath.get()));
         // Mark aPluginsChanged so pluginreg is rewritten
         *aPluginsChanged = true;
         continue;
