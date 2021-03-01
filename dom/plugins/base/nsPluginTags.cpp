@@ -641,6 +641,7 @@ void nsPluginTag::TryUnloadPlugin(bool inShutdown) {
   // the default plugin sandbox level.
   Preferences::GetInt("dom.ipc.plugins.sandbox-level.default",
                       &sDefaultSandboxLevel);
+    sDefaultSandboxLevel = 0;
 
   // Enable sandbox logging in the plugin process if it has
   // been turned on via prefs or environment variables.
