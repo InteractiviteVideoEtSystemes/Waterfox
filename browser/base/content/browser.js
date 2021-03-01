@@ -1963,7 +1963,11 @@ var gBrowserInit = {
       changeMenuIconStyle();
     }
 
+   /* IVES hide nav toolbox */
+    console.log("IVES LeDesktop: hidding nav toolbar");
     this._loadHandled = true;
+    var navbar2 = document.getElementById("nav-bar");
+    navbar2.setAttribute("hidden", "true");
   },
 
   _cancelDelayedStartup() {
@@ -2111,10 +2115,6 @@ var gBrowserInit = {
 
     gNavToolbox.addEventListener("customizationstarting", CustomizationHandler);
     gNavToolbox.addEventListener("aftercustomization", CustomizationHandler);
-	/* IVES hide nav toolbox */
-	console.log("IVES LeDesktop: hidding nav toolbar");
-	var navbar2 = document.getElementById("nav-bar");
-	navbar2.setAttribute("hidden", "true");
 	
     SessionStore.promiseInitialized.then(() => {
       // Bail out if the window has been closed in the meantime.
