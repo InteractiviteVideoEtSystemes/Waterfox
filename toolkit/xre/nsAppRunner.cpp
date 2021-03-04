@@ -2862,6 +2862,9 @@ class XREMain {
   int XRE_mainStartup(bool* aExitFlag);
   nsresult XRE_mainRun();
 
+  void parseArgsFromEnv(char * argv0, char * envargs);
+  char * splitArgv(char **argv, char **word);
+
   Result<bool, nsresult> CheckLastStartupWasCrash();
 
   nsCOMPtr<nsINativeAppSupport> mNativeApp;
@@ -2889,7 +2892,11 @@ class XREMain {
 #if defined(MOZ_WIDGET_GTK)
   GdkDisplay* mGdkDisplay;
 #endif
+  static constexpr size_t altargc_MAX = 20;
+  static char * altargv[altargc_MAX];
 };
+
+char * XREMain::altargv[XREMain::altargc_MAX] = { nullptr };
 
 #if defined(XP_UNIX) && !defined(ANDROID)
 static SmprintfPointer FormatUid(uid_t aId) {
@@ -4672,15 +4679,83 @@ nsresult XREMain::XRE_mainRun() {
   return rv;
 }
 
+char * XREMain::splitArgv(char **str, char **word)
+{
+   constexpr char QUOTE = '\'';
+   bool inquotes = false;
+
+   // optimization
+   if( **str == 0 )
+       return NULL;
+
+   // Skip leading spaces.
+   while (**str && isspace(**str))
+       (*str)++;
+
+   if( **str == '\0')
+       return NULL;
+
+   // Phrase in quotes is one arg
+   if( **str == QUOTE ){
+       (*str)++;
+       inquotes = true;
+   }
+
+   // Set phrase begining
+   *word = *str;
+
+   // Skip all chars if in quotes
+   if( inquotes ){
+       while( **str && **str!=QUOTE )
+           (*str)++;
+       //if( **str!= QUOTE )
+   }else{
+       // Skip non-space characters.
+       while( **str && !isspace(**str) )
+           (*str)++;
+   }
+   // Null terminate the phrase and set `str` pointer to next symbol
+   if(**str)
+       *(*str)++ = '\0';
+
+   return *str;
+}
+
+void XREMain::parseArgsFromEnv(char * argv0, char * envargs)
+{
+    char * newargs = strdup(envargs);
+    char * curarg = newargs;
+    altargv[0] = argv0;
+    gArgc = 1;
+
+    while( gArgc < altargc_MAX-1  &&  splitArgv( &curarg, &altargv[gArgc] ) )
+    {
+        ++gArgc;
+        if ( *curarg == '\0' ) break;
+    }
+    altargv[gArgc] = nullptr;
+    gArgv = altargv;
+}
 /*
  * XRE_main - A class based main entry point used by most platforms.
  *            Note that on OSX, aAppData->xreDirectory will point to
  *            .app/Contents/Resources.
  */
-int XREMain::XRE_main(int argc, char* argv[], const BootstrapConfig& aConfig) {
-  gArgc = argc;
-  gArgv = argv;
+int XREMain::XRE_main(int argc, char* argv[], const BootstrapConfig& aConfig)
+{
+  if ( getenv("XRE_OVERRIDE_ARGS"))
+  {
+      /* IVES  overriding arguments */
+      printf("LeDesktop: overriding arguments by env variable XRE_OVERRIDE_ARGS.\n"
+             "args = [%s]\n", getenv("XRE_OVERRIDE_ARGS"));
+      parseArgsFromEnv(argv[0], getenv("XRE_OVERRIDE_ARGS"));
+  }
+  else {
+    gArgc = argc;
+    gArgv = argv;
+  }
 
+    
   ScopedLogging log;
 
   mozilla::LogModule::Init(gArgc, gArgv);
