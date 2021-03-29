@@ -71,8 +71,8 @@ NS_IMETHODIMP nsNativeAppSupportCocoa::Start(bool* _retval) {
   // alert here.  But the alert's message and buttons would require custom
   // localization.  So (for now at least) we just log an English message
   // to the console before quitting.
-  if (major < 10 || minor < 6) {
-    NSLog(@"Minimum OS version requirement not met!");
+  if (major < 10 || (major == 10 && minor < 12)) {
+    NSLog(@"Minimum OS version requirement not met: Mac OS 10.12!");
     return NS_OK;
   }
 
