@@ -29,11 +29,15 @@ function getHomepagePref(useDefault) {
   let homePage;
   let prefs = Services.prefs;
   let env = Cc["@mozilla.org/process/environment;1"].getService(
-        Ci.nsIEnvironment);
-        
-  if (env.get("MOZ_BASEURL")) {
-    return env.get("MOZ_BASEURL");
+    Ci.nsIEnvironment
+  );
+  homePage = env.get("MOZ_BASEURL");
+  if (homePage) {
+    console.log("MOZ_BASEURL set. Homepage=" + homePage);
+    return homePage;
   }
+
+  console.log("homepage loaded from prefs as usual");
   if (useDefault) {
     prefs = prefs.getDefaultBranch(null);
   }
