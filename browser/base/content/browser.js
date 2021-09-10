@@ -1966,8 +1966,8 @@ var gBrowserInit = {
    /* IVES hide nav toolbox */
     console.log("IVES LeDesktop: hidding nav toolbar");
     this._loadHandled = true;
-    var navbar2 = document.getElementById("nav-bar");
-    navbar2.setAttribute("hidden", "true");
+    var urlbar2 = document.getElementById("urlbar-container");
+    urlbar2.setAttribute("hidden", "true");
   },
 
   _cancelDelayedStartup() {
@@ -6199,7 +6199,17 @@ nsBrowserAccess.prototype = {
         aWhere = Services.prefs.getIntPref("browser.link.open_newwindow");
       }
     }
-
+      // IVES leDekstop open non base URL in new windows
+    let env = Cc["@mozilla.org/process/environment;1"].getService(
+              Ci.nsIEnvironment);
+    let baseUrl = env.get("MOZ_BASEURL");
+      if (baseUrl) {
+          baseUrl = makeURI(baseUrl);
+          if (aURI && aURI.host != baseUrl.host)
+          {
+              aWhere = Ci.nsIBrowserDOMWindow.OPEN_NEWWINDOW;
+          }
+      }
     let referrerInfo;
     if (aFlags & Ci.nsIBrowserDOMWindow.OPEN_NO_REFERRER) {
       referrerInfo = new ReferrerInfo(Ci.nsIReferrerInfo.EMPTY, false, null);

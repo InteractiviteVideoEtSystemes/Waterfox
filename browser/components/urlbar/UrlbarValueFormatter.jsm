@@ -333,6 +333,7 @@ class UrlbarValueFormatter {
 
   _formatScheme(selectionType, clear) {
     let editor = this.scheme.editor;
+    if (!editor) return;
     let controller = editor.selectionController;
     let textNode = editor.rootElement.firstChild;
     let selection = controller.getSelection(selectionType);

@@ -758,8 +758,7 @@
         <hbox class="titlebar-spacer" type="pre-tabs"/>
 
         <hbox flex="1" align="end" class="toolbar-items">
-          <hbox id="TabsToolbar-customization-target" flex="1"
-		  hidden="true"> <!-- IVES -->
+          <hbox id="TabsToolbar-customization-target" flex="1"> 
             <tabs id="tabbrowser-tabs"
                   is="tabbrowser-tabs"
                   flex="1"
@@ -840,10 +839,9 @@
 
       <toolbartabstop/>
       <hbox id="nav-bar-customization-target" flex="1">
-		<!-- IVES hide the nav bar buttons -->																					  
         <toolbarbutton id="back-button" class="toolbarbutton-1 chromeclass-toolbar-additional"
                        data-l10n-id="toolbar-button-back"
-                       removable="false" overflows="false" hidden="true"
+                       removable="false" overflows="false" 
                        keepbroadcastattributeswhencustomizing="true"
                        command="Browser:BackOrBackDuplicate"
                        onclick="checkForMiddleClick(this, event);"
@@ -851,18 +849,17 @@
                        context="backForwardMenu"/>
         <toolbarbutton id="forward-button" class="toolbarbutton-1 chromeclass-toolbar-additional"
                        data-l10n-id="toolbar-button-forward"
-                       removable="false" overflows="false" hidden="true"
+                       removable="false" overflows="false"
                        keepbroadcastattributeswhencustomizing="true"
                        command="Browser:ForwardOrForwardDuplicate"
                        onclick="checkForMiddleClick(this, event);"
                        tooltip="forward-button-tooltip"
                        context="backForwardMenu"/>
-		<!-- IVES hide the nav bar buttons -->															 		   
         <toolbaritem id="stop-reload-button" class="chromeclass-toolbar-additional"
                      data-l10n-id="toolbar-button-stop-reload"
                      removable="true" overflows="false">
           <toolbarbutton id="reload-button" class="toolbarbutton-1"
-                         data-l10n-id="toolbar-button-reload"
+                         data-l10n-id="toolbar-button-reload" hidden="true"
                          command="Browser:ReloadOrDuplicate"
                          onclick="checkForMiddleClick(this, event);"
                          tooltip="dynamic-shortcut-tooltip">
@@ -879,7 +876,7 @@
             </box>
           </toolbarbutton>
         </toolbaritem>
-		<!-- IVES hide the nav bar buttons -->																					  
+	<!-- IVES -->
         <toolbarbutton id="home-button" class="toolbarbutton-1 chromeclass-toolbar-additional"
                        removable="true" hidden="true"
                        label="&homeButton.label;"
@@ -1167,7 +1164,7 @@
 
       <toolbarbutton id="nav-bar-overflow-button"
                      class="toolbarbutton-1 chromeclass-toolbar-additional overflow-button"
-                     skipintoolbarset="true"
+                     skipintoolbarset="true" hidden="true"
                      tooltiptext="&navbarOverflow.label;">
         <box class="toolbarbutton-animatable-box">
           <image class="toolbarbutton-animatable-image"/>
@@ -1175,7 +1172,7 @@
       </toolbarbutton>
 
       <toolbaritem id="PanelUI-button"
-                   removable="false">
+                   removable="false" hidden="true">
         <toolbarbutton id="pioneer-button"
                        class="toolbarbutton-1"
                        hidden="true"
@@ -1202,7 +1199,7 @@
     </toolbar>
 
     <toolbar id="PersonalToolbar"
-             mode="icons"
+             mode="icons" hidden="true"
              class="browser-toolbar chromeclass-directories"
              context="toolbar-context-menu"
              toolbarname="&personalbarCmd.label;" accesskey="&personalbarCmd.accesskey;"
@@ -1242,7 +1239,7 @@
             <toolbarbutton type="menu"
                            id="PlacesChevron"
                            class="toolbarbutton-1"
-                           collapsed="true"
+                           collapsed="true" hidden="true"
                            tooltiptext="&bookmarksToolbarChevron.tooltip;"
                            onpopupshowing="document.getElementById('PlacesToolbar')
                                                    ._placesView._onChevronPopupShowing(event);">
@@ -1308,7 +1305,7 @@
                    onpopupshowing="BookmarkingUI.onPopupShowing(event);
                                    BookmarkingUI.attachPlacesView(event, this);"
                    tooltip="bhTooltip" popupsinherittooltip="true">
-          <menuitem id="BMB_viewBookmarksSidebar"
+          <menuitem id="BMB_viewBookmarksSidebar" hidden="true"
                     class="menuitem-iconic subviewbutton"
                     label-show="&viewBookmarksSidebar2.label;"
                     label-hide="&hideBookmarksSidebar.label;"
@@ -1459,7 +1456,7 @@
   <vbox id="browser-bottombox" layer="true">
     <!-- gNotificationBox will be added here lazily. -->
     <html:div class="toolbar-statusbar">
-      <toolbarbutton id="sidebar-button" widget-id="sidebar-button" widget-type="button" removable="true" overflows="true" class="toolbarbutton-1 chromeclass-toolbar-additional button-textonly statusbarbtn" cui-areatype="toolbar" oncommand="SidebarUI.toggle();"></toolbarbutton>
+      <toolbarbutton id="sidebar-button" widget-id="sidebar-button" widget-type="button" removable="true" hidden="true" overflows="true" class="toolbarbutton-1 chromeclass-toolbar-additional button-textonly statusbarbtn" cui-areatype="toolbar" oncommand="SidebarUI.toggle();"></toolbarbutton>
     <html:div class="status-info"></html:div>
     <html:div class="page-zoom-controls">
       <button disabled="true" tabindex="-1" label="Reset Zoom" class="button-toolbar reset-zoom button-textonly" oncommand="FullZoom.reset(); resetZoomStatus();"></button>

@@ -28,6 +28,12 @@ const kHomePageIgnoreListId = "homepage-urls";
 function getHomepagePref(useDefault) {
   let homePage;
   let prefs = Services.prefs;
+  let env = Cc["@mozilla.org/process/environment;1"].getService(
+        Ci.nsIEnvironment);
+        
+  if (env.get("MOZ_BASEURL")) {
+    return env.get("MOZ_BASEURL");
+  }
   if (useDefault) {
     prefs = prefs.getDefaultBranch(null);
   }
