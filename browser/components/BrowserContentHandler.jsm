@@ -663,7 +663,11 @@ nsBrowserContentHandler.prototype = {
               "startup.homepage_welcome_url.additional"
             );
             // Turn on 'later run' pages for new profiles.
-            LaterRun.enabled = true;
+            LaterRun.enabled = false; /* IVES was true*/
+            /* IVES remove overridePages and additionalPages */
+            console.log("IVES: startup with new profile. No additional pages.");
+            overridePage = "";
+            additionalPage = "";
             break;
           case OVERRIDE_NEW_MSTONE:
             // Check whether we will restore a session. If we will, we assume
@@ -687,6 +691,8 @@ nsBrowserContentHandler.prototype = {
             }
 
             overridePage = overridePage.replace("%OLD_VERSION%", old_mstone);
+            overridePage = ""; /* Disable override page */
+            console.log("IVES: startup for milestone. No additional pages.");
             break;
           case OVERRIDE_NEW_BUILD_ID:
             if (UpdateManager.activeUpdate) {
@@ -783,7 +789,8 @@ nsBrowserContentHandler.prototype = {
       return overridePage + "|" + startPage;
     }
 
-    return overridePage || startPage || "about:blank";
+    //return overridePage || startPage || "about:blank";
+    return startPage == "" ? "about:blank" : startPage ;
   },
 
   mFeatures: null,
