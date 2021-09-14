@@ -228,7 +228,7 @@ pref("browser.touchmode.auto", true);
 pref("browser.shell.checkDefaultBrowser", true);
 pref("browser.shell.shortcutFavicons",true);
 pref("browser.shell.mostRecentDateSetAsDefault", "");
-pref("browser.shell.skipDefaultBrowserCheckOnFirstRun", false);
+pref("browser.shell.skipDefaultBrowserCheckOnFirstRun", true);
 pref("browser.shell.didSkipDefaultBrowserCheckOnFirstRun", false);
 pref("browser.shell.defaultBrowserCheckCount", 0);
 pref("browser.defaultbrowser.notificationbar", true);
@@ -240,7 +240,7 @@ pref("browser.startup.homepage",            "about:home");
 pref("browser.startup.homepage.abouthome_cache.enabled", false);
 
 // Whether we should skip the homepage when opening the first-run page
-pref("browser.startup.firstrunSkipsHomepage", true);
+pref("browser.startup.firstrunSkipsHomepage", false);
 
 // Show an about:blank window as early as possible for quick startup feedback.
 // Held to nightly on Linux due to bug 1450626.
@@ -1353,10 +1353,10 @@ pref("browser.newtabpage.activity-stream.feeds.section.topstories", false, locke
   pref("browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar", false);
 #endif
 
-pref("trailhead.firstrun.branches", "join-dynamic");
+pref("trailhead.firstrun.branches", "nofirstrun");
 
 // Separate about welcome
-pref("browser.aboutwelcome.enabled", true);
+pref("browser.aboutwelcome.enabled", false);
 // Used to set multistage welcome UX
 pref("browser.aboutwelcome.overrideContent", "");
 

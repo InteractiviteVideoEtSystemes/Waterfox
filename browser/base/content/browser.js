@@ -2494,7 +2494,6 @@ var gBrowserInit = {
       if (!window.arguments || !window.arguments[0]) {
         return null;
       }
-
       let uri = window.arguments[0];
       let defaultArgs = BrowserHandler.defaultArgs;
 
@@ -2964,7 +2963,6 @@ function BrowserHome(aEvent) {
   }
 
   var homePage = HomePage.get(window);
-  console.log("IVES: homepage is ");
   var where = whereToOpenLink(aEvent, false, true);
   var urls;
   var notifyObservers;
@@ -6201,7 +6199,6 @@ nsBrowserAccess.prototype = {
       }
     }
       // IVES leDekstop open non base URL in new windows
-    console.log("new link");
     let env = Cc["@mozilla.org/process/environment;1"].getService(
               Ci.nsIEnvironment);
     let baseUrl = env.get("MOZ_BASEURL");
