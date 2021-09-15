@@ -646,13 +646,16 @@ nsBrowserContentHandler.prototype = {
         "unknown"
       );
       override = needHomepageOverride(prefb);
+      console.log(override);
       if (override != OVERRIDE_NONE) {
         switch (override) {
           case OVERRIDE_ALTERNATE_PROFILE:
             // Override the welcome page to explain why the user has a new
             // profile. nsBrowserGlue.css will be responsible for showing the
             // modal dialog.
-            overridePage = NEWINSTALL_PAGE;
+            console.log("IVES: Alternate profile");
+            //overridePage = NEWINSTALL_PAGE;
+            overridePage = "";
             break;
           case OVERRIDE_NEW_PROFILE:
             // New profile.
