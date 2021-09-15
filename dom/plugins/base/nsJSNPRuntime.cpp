@@ -1219,11 +1219,16 @@ bool NPObjWrapperProxyHandler::set(JSContext* cx, JS::Handle<JSObject*> proxy,
   _releasevariantvalue(&npv);  // Release the variant
   if (!ReportExceptionIfPending(cx)) return false;
 
+
+
+#if 0
+  /* IVES - if property does not exists do not mail */
   if (!ok) {
     ThrowJSExceptionASCII(cx, "Error setting property on NPObject!");
 
     return false;
   }
+#endif
 
   return result.succeed();
 }
