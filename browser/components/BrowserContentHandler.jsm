@@ -18,7 +18,7 @@ const { AppConstants } = ChromeUtils.import(
 XPCOMUtils.defineLazyModuleGetters(this, {
   BrowserWindowTracker: "resource:///modules/BrowserWindowTracker.jsm",
   HeadlessShell: "resource:///modules/HeadlessShell.jsm",
-  HomePage: "resource:///modules/HomePage.jLaterRunsm",
+  HomePage: "resource:///modules/HomePage.jsm",
   FirstStartup: "resource://gre/modules/FirstStartup.jsm",
   LaterRun: "resource:///modules/LaterRun.jsm",
   PrivateBrowsingUtils: "resource://gre/modules/PrivateBrowsingUtils.jsm",
@@ -237,7 +237,8 @@ function openBrowserWindow(
     let pService = Cc["@mozilla.org/toolkit/profile-service;1"].getService(
       Ci.nsIToolkitProfileService
     );
-    /* IVES : remove newInstall Page for LeDesktop
+
+/* IVES - suppression popup migration profile
     if (isStartup && pService.createdAlternateProfile) {
       let url = NEWINSTALL_PAGE;
       if (Array.isArray(urlOrUrlList)) {
@@ -246,8 +247,7 @@ function openBrowserWindow(
         urlOrUrlList = [url, urlOrUrlList];
       }
     }
-    */
-
+*/
     if (Array.isArray(urlOrUrlList)) {
       // There isn't an explicit way to pass a principal here, so we load multiple URLs
       // with system principal when we get to actually loading them.
